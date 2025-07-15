@@ -24,7 +24,11 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 // Protected Routes - Require Authentication
 Route::middleware(['auth'])->group(function () {
-    Route::resource('products', ProductController::class);
+    // Livewire Product Routes
+    Route::get('/products', App\Livewire\Products\Index::class)->name('products.index');
+    Route::get('/products/create', App\Livewire\Products\Create::class)->name('products.create');
+    Route::get('/products/{product}', App\Livewire\Products\Show::class)->name('products.show');
+    Route::get('/products/{product}/edit', App\Livewire\Products\Edit::class)->name('products.edit');
 });
 
 //Route::get('/', fn() => redirect('/posts'));
