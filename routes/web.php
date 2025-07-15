@@ -14,13 +14,8 @@ Route::get('/', function () {
 });
 
 // Authentication Routes
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Registration Routes
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/login', App\Livewire\Auth\Login::class)->name('login');
+Route::get('/register', App\Livewire\Auth\Register::class)->name('register');
 
 // Protected Routes - Require Authentication
 Route::middleware(['auth'])->group(function () {

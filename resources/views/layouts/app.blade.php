@@ -19,12 +19,7 @@
                 @auth
                     <div class="mt-3">
                         <span class="text-muted">Welcome, {{ auth()->user()->name }}!</span>
-                        <form action="{{ route('logout') }}" method="post" class="d-inline">
-                            @csrf
-                            <button type="submit" class="btn btn-outline-danger btn-sm ms-2">
-                                <i class="bi bi-box-arrow-right"></i> Logout
-                            </button>
-                        </form>
+                        @livewire('auth.logout')
                     </div>
                 @endauth
             </div>
