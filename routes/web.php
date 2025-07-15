@@ -24,6 +24,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/products/create', App\Livewire\Products\Create::class)->name('products.create');
     Route::get('/products/{product}', App\Livewire\Products\Show::class)->name('products.show');
     Route::get('/products/{product}/edit', App\Livewire\Products\Edit::class)->name('products.edit');
+    
+    // Livewire Post Routes
+    Route::get('/posts', App\Livewire\Posts\Index::class)->name('posts.index');
+    Route::get('/posts/create', App\Livewire\Posts\Create::class)->name('posts.create');
+    Route::get('/posts/{id}/edit', App\Livewire\Posts\Edit::class)->name('posts.edit');
 });
 
 //Route::get('/', fn() => redirect('/posts'));
