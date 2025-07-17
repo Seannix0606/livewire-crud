@@ -10,7 +10,7 @@
             <h4>Login</h4>
         </div>
         <div class="card-body">
-            <form wire:submit="login">
+            <form wire:submit.prevent="login">
                 <div class="mb-3 row">
                     <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email</label>
                     <div class="col-md-6">
@@ -51,7 +51,7 @@
             <div class="text-center mt-3">
                 <small class="text-muted">
                     Don't have an account yet?
-                    <a href="{{ route('register') }}" class="text-decoration-none">Register here</a>
+                    <a href="{{ route('register') }}" wire:navigate class="text-decoration-none">Register here</a>
                 </small>
             </div>
         </div>

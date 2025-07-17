@@ -53,7 +53,7 @@ class Create extends Component
         Product::create($data);
 
         session()->flash('success', 'Product created successfully.');
-        return redirect()->route('products.index');
+        return $this->redirectRoute('products.index', navigate: true);
     }
 
     public function render()

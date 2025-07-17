@@ -39,7 +39,7 @@ class Login extends Component
             Log::info('Login successful for email: ' . $this->email);
             
             session()->flash('success', 'Login successful!');
-            return redirect()->intended(route('products.index'));
+            return $this->redirectRoute('products.index', navigate: true);
         }
 
         Log::warning('Login failed for email: ' . $this->email);

@@ -39,7 +39,7 @@ class Register extends Component
 
         // Redirect to login page with success message instead of auto-login
         session()->flash('success', 'Account created successfully! Please log in with your credentials.');
-        return redirect()->route('login');
+        return $this->redirectRoute('login', navigate: true);
     }
 
     public function render()

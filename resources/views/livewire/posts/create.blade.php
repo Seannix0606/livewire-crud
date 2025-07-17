@@ -5,11 +5,11 @@
                 Add New Post
             </div>
             <div class="float-end">
-                <a href="{{ route('posts.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                <a href="{{ route('posts.index') }}" wire:navigate class="btn btn-primary btn-sm">&larr; Back</a>
             </div>
         </div>
         <div class="card-body">
-            <form wire:submit="save">
+            <form wire:submit.prevent="save">
                 <div class="mb-3 row">
                     <label for="title" class="col-md-4 col-form-label text-md-end text-start">Title</label>
                     <div class="col-md-6">

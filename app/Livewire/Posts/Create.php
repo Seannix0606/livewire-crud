@@ -39,7 +39,7 @@ class Create extends Component
         session()->put('post_id_counter', $nextId + 1);
 
         session()->flash('success', 'Post created successfully.');
-        return redirect()->route('posts.index');
+        return $this->redirectRoute('posts.index', navigate: true);
     }
 
     public function render()

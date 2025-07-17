@@ -5,11 +5,10 @@ namespace App\Livewire\Products;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\WithFileUploads;
 
 class Index extends Component
 {
-    use WithPagination, WithFileUploads;
+    use WithPagination;
 
     public $search = '';
     public $sortField = 'created_at';

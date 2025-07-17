@@ -27,7 +27,7 @@ class Edit extends Component
 
         if (!$this->post) {
             session()->flash('error', 'Post not found.');
-            return redirect()->route('posts.index');
+            return $this->redirectRoute('posts.index', navigate: true);
         }
 
         $this->title = $this->post['title'];
@@ -58,12 +58,12 @@ class Edit extends Component
 
         if (!$updated) {
             session()->flash('error', 'Post not found.');
-            return redirect()->route('posts.index');
+            return $this->redirectRoute('posts.index', navigate: true);
         }
 
         session()->put('posts', $posts);
         session()->flash('success', 'Post updated successfully.');
-        return redirect()->route('posts.index');
+        return $this->redirectRoute('posts.index', navigate: true);
     }
 
     public function render()

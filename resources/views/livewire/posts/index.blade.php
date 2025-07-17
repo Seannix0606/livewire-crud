@@ -18,7 +18,7 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <a href="{{ route('posts.create') }}" class="btn btn-success btn-sm">
+                    <a href="{{ route('posts.create') }}" wire:navigate class="btn btn-success btn-sm">
                         <i class="bi bi-plus-circle"></i> Add New Post
                     </a>
                 </div>
@@ -69,12 +69,10 @@
                         <td>{{ Str::limit($post['content'], 100) }}</td>
                         <td>{{ $post['created_at'] ?? 'N/A' }}</td>
                         <td>
-                            <a href="{{ route('posts.edit', $post['id']) }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('posts.edit', $post['id']) }}" wire:navigate class="btn btn-primary btn-sm">
                                 <i class="bi bi-pencil-square"></i> Edit
                             </a>
-                            <button wire:click="deletePost({{ $post['id'] }})" 
-                                    wire:confirm="Are you sure you want to delete this post?" 
-                                    class="btn btn-danger btn-sm">
+                            <button type="button" wire:click.prevent="deletePost({{ $post['id'] }})" class="btn btn-danger btn-sm">
                                 <i class="bi bi-trash"></i> Delete
                             </button>
                         </td>
@@ -97,19 +95,19 @@
                         <ul class="pagination">
                             @if($currentPage > 1)
                                 <li class="page-item">
-                                    <button wire:click="setPage({{ $currentPage - 1 }})" class="page-link">Previous</button>
+                                    <button wire:click.prevent="setPage({{ $currentPage - 1 }})" class="page-link">Previous</button>
                                 </li>
                             @endif
 
                             @for($i = 1; $i <= ceil($totalPosts / $perPage); $i++)
                                 <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
-                                    <button wire:click="setPage({{ $i }})" class="page-link">{{ $i }}</button>
+                                    <button wire:click.prevent="setPage({{ $i }})" class="page-link">{{ $i }}</button>
                                 </li>
                             @endfor
 
                             @if($currentPage < ceil($totalPosts / $perPage))
                                 <li class="page-item">
-                                    <button wire:click="setPage({{ $currentPage + 1 }})" class="page-link">Next</button>
+                                    <button wire:click.prevent="setPage({{ $currentPage + 1 }})" class="page-link">Next</button>
                                 </li>
                             @endif
                         </ul>

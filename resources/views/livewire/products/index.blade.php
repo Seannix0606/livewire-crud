@@ -12,7 +12,7 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <a href="{{ route('products.create') }}" class="btn btn-success btn-sm">
+                    <a href="{{ route('products.create') }}" wire:navigate class="btn btn-success btn-sm">
                         <i class="bi bi-plus-circle"></i> Add New Product
                     </a>
                 </div>
@@ -93,15 +93,13 @@
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->price }}</td>
                         <td>
-                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-warning btn-sm">
-                                <i class="bi bi-eye"></i> Show
+                            <a href="{{ route('products.show', $product->id) }}" wire:navigate class="btn btn-outline-warning btn-sm">
+                                <i class="bi bi-eye-fill"></i> View
                             </a>
-                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('products.edit', $product->id) }}" wire:navigate class="btn btn-primary btn-sm">
                                 <i class="bi bi-pencil-square"></i> Edit
                             </a>
-                            <button wire:click="deleteProduct({{ $product->id }})" 
-                                    wire:confirm="Are you sure you want to delete this product?" 
-                                    class="btn btn-danger btn-sm">
+                            <button type="button" wire:click.prevent="deleteProduct({{ $product->id }})" class="btn btn-danger btn-sm">
                                 <i class="bi bi-trash"></i> Delete
                             </button>
                         </td>
